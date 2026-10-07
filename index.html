@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pasindu Lakshan Vithanage | Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Pasindu Lakshan Vithanage - Full-Stack Developer and HNDIT Undergraduate specializing in Java, Spring Boot, Python, and Angular." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.72);
+      --bg-card-hover: rgba(26, 36, 56, 0.88);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(99, 102, 241, 0.3);
+      
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+      --accent-light: #818cf8;
+      --cyan: #06b6d4;
+      --emerald: #10b981;
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 12% 18%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 88% 65%, rgba(6, 182, 212, 0.09) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Glassmorphism Surface */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 14px 35px -10px rgba(99, 102, 241, 0.18);
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 74px;
+      z-index: 1000;
+      background: rgba(10, 14, 23, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-badge {
+      background: var(--accent-gradient);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.6rem 1.3rem;
+      background: var(--accent-gradient);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+      transition: var(--transition);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 145px 0 85px;
+      min-height: 94vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.95rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--emerald);
+      margin-bottom: 1.25rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+
+    .hero-title {
+      font-size: 3.25rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 1.1rem;
+    }
+
+    .gradient-text {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.85rem;
+      max-width: 550px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.85rem 1.6rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-primary);
+      border-color: var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.6rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    /* Hero Profile Showcase */
+    .hero-visual-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar-card {
+      position: relative;
+      width: 320px;
+      height: 385px;
+      border-radius: var(--radius-lg);
+      padding: 10px;
+      background: linear-gradient(180deg, rgba(99, 102, 241, 0.35) 0%, rgba(17, 24, 39, 0.85) 100%);
+      box-shadow: 0 24px 50px -15px rgba(0, 0, 0, 0.7);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: calc(var(--radius-lg) - 6px);
+      display: block;
+    }
+
+    .floating-tech-badge {
+      position: absolute;
+      background: rgba(17, 24, 39, 0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      padding: 0.55rem 0.95rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 10px 22px -5px rgba(0, 0, 0, 0.5);
+      animation: float 4.5s ease-in-out infinite;
+    }
+
+    .badge-top-left {
+      top: 15px;
+      left: -20px;
+      animation-delay: 0s;
+    }
+
+    .badge-bottom-right {
+      bottom: 25px;
+      right: -25px;
+      animation-delay: 2.2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* About Section */
+    .about {
+      padding: 90px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 2.5rem;
+    }
+
+    .about-bio {
+      padding: 2.2rem;
+    }
+
+    .about-bio h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .about-bio p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .competencies-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 1.6rem 0 0.8rem;
+    }
+
+    .competencies-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .comp-tag {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: var(--accent-light);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .education-card {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .edu-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .edu-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: rgba(6, 182, 212, 0.12);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .edu-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .edu-institute {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .edu-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      color: var(--cyan);
+      margin: 0.8rem 0;
+    }
+
+    .edu-bullets {
+      margin-top: 0.8rem;
+    }
+
+    .edu-bullets li {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .edu-bullets li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+    }
+
+    /* Skills Section */
+    .skills {
+      padding: 90px 0;
+      background: rgba(17, 24, 39, 0.35);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      padding: 1.8rem;
+    }
+
+    .category-top {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .cat-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--accent-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .category-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .skill-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .skill-pill:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Projects Section */
+    .projects {
+      padding: 90px 0;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-gradient);
+      opacity: 0.75;
+    }
+
+    .project-top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .proj-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .proj-links a {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      margin-left: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .proj-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .project-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-highlights {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-highlights li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-highlights li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--emerald);
+      font-weight: bold;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stack-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* Certifications Section */
+    .certifications {
+      padding: 90px 0;
+      background: rgba(17, 24, 39, 0.35);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .cert-card {
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .cert-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .cert-info h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.35rem;
+    }
+
+    .cert-issuer {
+      font-size: 0.85rem;
+      color: var(--cyan);
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 90px 0 110px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      padding: 2.2rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .channel-item {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .channel-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-light);
+      font-size: 1.1rem;
+    }
+
+    .channel-meta span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .channel-meta a, .channel-meta strong {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .channel-meta a:hover {
+      color: var(--cyan);
+    }
+
+    .contact-form-wrap {
+      padding: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2.2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .footer a:hover {
+      color: var(--accent-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-visual-wrapper {
+        order: -1;
+      }
+
+      .hero-title {
+        font-size: 2.6rem;
+      }
+
+      .avatar-card {
+        width: 290px;
+        height: 350px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 1.5rem;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .hero {
+        padding: 120px 0 60px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= Navigation ================= -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo">
+        <span class="logo-badge">PV</span>
+        <span>Pasindu.dev</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu" style="display: none;">
+    <a href="#about" class="nav-link mobile-link">About</a>
+    <a href="#skills" class="nav-link mobile-link">Skills</a>
+    <a href="#projects" class="nav-link mobile-link">Projects</a>
+    <a href="#certifications" class="nav-link mobile-link">Certifications</a>
+    <a href="#contact" class="nav-link mobile-link">Contact</a>
+  </div>
+
+  <!-- ================= Hero Section ================= -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Available for Opportunities</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Pasindu Lakshan Vithanage</span>
+          </h1>
+          
+          <p class="hero-subtitle">
+            Motivated Full-Stack Developer and HNDIT undergraduate with solid foundations in Java, Spring Boot, Python, and Angular, specializing in scalable architectures and AI capabilities.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <span>View Projects</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="https://github.com/pasinduvithanage08" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/pasinduvithanage" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <i class="fa-brands fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-item">
+              <i class="fa-solid fa-location-dot" style="color: var(--cyan);"></i>
+              <span>Anuradhapura, Sri Lanka</span>
+            </div>
+            <div class="meta-item">
+              <i class="fa-solid fa-code" style="color: var(--accent-light);"></i>
+              <span>Java • Spring Boot • Angular • Python</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Photo -->
+        <div class="hero-visual-wrapper">
+          <div class="avatar-card">
+            <img src="MyPhoto.png" alt="Pasindu Lakshan Vithanage" class="avatar-img" />
+            
+            <div class="floating-tech-badge badge-top-left">
+              <i class="fa-brands fa-java" style="color: #f89820;"></i>
+              <span>Spring Boot</span>
+            </div>
+            
+            <div class="floating-tech-badge badge-bottom-right">
+              <i class="fa-solid fa-brain" style="color: var(--cyan);"></i>
+              <span>AI Integration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= About Me ================= -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Background</span>
+        <h2 class="section-title">About Me</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="glass-card about-bio">
+          <h3>Professional Profile</h3>
+          <p>
+            Motivated Full-Stack Developer and HNDIT undergraduate with solid foundations in Java, Spring Boot, Python, and Angular. Experienced in building end-to-end applications, integrating AI capabilities, and collaborating in team environments.
+          </p>
+          <p>
+            Passionate about crafting scalable, clean, and user-centric software, and eager to contribute to a dynamic software engineering team to solve complex technical challenges.
+          </p>
+
+          <h4 class="competencies-title">Core Competencies</h4>
+          <div class="competencies-tags">
+            <span class="comp-tag">Problem-Solving</span>
+            <span class="comp-tag">Team Collaboration</span>
+            <span class="comp-tag">Debugging & Testing</span>
+            <span class="comp-tag">Creative Thinking</span>
+            <span class="comp-tag">Attention to Detail</span>
+            <span class="comp-tag">Agile Mindset</span>
+          </div>
+        </div>
+
+        <!-- Academic Qualification -->
+        <div class="glass-card education-card">
+          <div>
+            <div class="edu-header">
+              <div class="edu-icon-wrap">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h3 class="edu-title">Higher National Diploma in IT (HNDIT)</h3>
+                <p class="edu-institute">Sri Lanka Institute of Advanced Technological Education (SLIATE)</p>
+              </div>
+            </div>
+
+            <span class="edu-badge">2023 — 2025 • Anuradhapura, Sri Lanka</span>
+
+            <ul class="edu-bullets">
+              <li>Core focus areas: Object-oriented programming and software engineering principles.</li>
+              <li>Relational database modeling and normalization using MySQL.</li>
+              <li>Full-stack application architecture and RESTful web service implementation.</li>
+              <li>Software testing, debugging, and agile team project workflows.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Technical Skills ================= -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Capabilities</span>
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Languages -->
+        <div class="glass-card skill-category">
+          <div class="category-top">
+            <div class="cat-icon"><i class="fa-solid fa-code"></i></div>
+            <h3 class="category-title">Languages</h3>
+          </div>
+          <div class="pill-list">
+            <span class="skill-pill"><i class="fa-brands fa-java" style="color: #f89820;"></i> Java</span>
+            <span class="skill-pill"><i class="fa-brands fa-python" style="color: #3776ab;"></i> Python</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & UI -->
+        <div class="glass-card skill-category">
+          <div class="category-top">
+            <div class="cat-icon"><i class="fa-solid fa-cubes"></i></div>
+            <h3 class="category-title">Frameworks & UI</h3>
+          </div>
+          <div class="pill-list">
+            <span class="skill-pill"><i class="fa-solid fa-leaf" style="color: #6db33f;"></i> Spring Boot</span>
+            <span class="skill-pill"><i class="fa-brands fa-angular" style="color: #dd0031;"></i> Angular</span>
+            <span class="skill-pill"><i class="fa-solid fa-window-maximize" style="color: #818cf8;"></i> Java Swing</span>
+          </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="glass-card skill-category">
+          <div class="category-top">
+            <div class="cat-icon"><i class="fa-solid fa-database"></i></div>
+            <h3 class="category-title">Databases</h3>
+          </div>
+          <div class="pill-list">
+            <span class="skill-pill"><i class="fa-solid fa-server" style="color: #00758f;"></i> MySQL</span>
+          </div>
+        </div>
+
+        <!-- Version Control & Tools -->
+        <div class="glass-card skill-category">
+          <div class="category-top">
+            <div class="cat-icon"><i class="fa-solid fa-toolbox"></i></div>
+            <h3 class="category-title">Version Control & Tools</h3>
+          </div>
+          <div class="pill-list">
+            <span class="skill-pill"><i class="fa-brands fa-git-alt" style="color: #f05032;"></i> Git</span>
+            <span class="skill-pill"><i class="fa-brands fa-github"></i> GitHub</span>
+            <span class="skill-pill">IntelliJ IDEA</span>
+            <span class="skill-pill">Visual Studio Code</span>
+            <span class="skill-pill">NetBeans</span>
+          </div>
+        </div>
+
+        <!-- AI & Productivity -->
+        <div class="glass-card skill-category">
+          <div class="category-top">
+            <div class="cat-icon"><i class="fa-solid fa-robot"></i></div>
+            <h3 class="category-title">AI & Productivity</h3>
+          </div>
+          <div class="pill-list">
+            <span class="skill-pill"><i class="fa-brands fa-microsoft" style="color: #00a4ef;"></i> Microsoft 365 Copilot</span>
+            <span class="skill-pill"><i class="fa-solid fa-microchip" style="color: var(--cyan);"></i> Grok AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Featured Projects ================= -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Portfolio Works</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Point of Sale System -->
+        <div class="glass-card project-card">
+          <div>
+            <div class="project-top-meta">
+              <span class="proj-type">Full-Stack Application</span>
+              <div class="proj-links">
+                <a href="https://github.com/pasinduvithanage08" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-name">Point of Sale System</h3>
+            <p class="project-desc">
+              Full-stack Point of Sale application engineered to streamline retail transactions, automated billing, and live inventory management.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Designed a responsive front-end with Angular and a scalable RESTful API backend using Spring Boot and MySQL.</li>
+              <li>Implemented secure user authentication and role-based access control (RBAC).</li>
+              <li>Developed dynamic sales reporting dashboards for transaction analytics.</li>
+            </ul>
+          </div>
+
+          <div class="project-stack">
+            <span class="stack-badge">Spring Boot</span>
+            <span class="stack-badge">Angular</span>
+            <span class="stack-badge">MySQL</span>
+          </div>
+        </div>
+
+        <!-- Cafe Management System -->
+        <div class="glass-card project-card">
+          <div>
+            <div class="project-top-meta">
+              <span class="proj-type">Desktop Application</span>
+              <div class="proj-links">
+                <a href="https://github.com/pasinduvithanage08" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-name">Cafe Management System</h3>
+            <p class="project-desc">
+              Desktop application designed to oversee daily cafe operations including food orders, item inventory, cashier billing, and customer records.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Implemented an intuitive GUI using Java Swing, reducing manual order errors and streamlining cashier workflows.</li>
+              <li>Designed a relational data model enabling real-time inventory tracking.</li>
+              <li>Automated end-of-day sales reporting and calculation workflows.</li>
+            </ul>
+          </div>
+
+          <div class="project-stack">
+            <span class="stack-badge">Java</span>
+            <span class="stack-badge">Java Swing</span>
+            <span class="stack-badge">MySQL</span>
+          </div>
+        </div>
+
+        <!-- FRIDAY Voice Assistant -->
+        <div class="glass-card project-card">
+          <div>
+            <div class="project-top-meta">
+              <span class="proj-type">AI & Task Automation</span>
+              <div class="proj-links">
+                <a href="https://github.com/pasinduvithanage08" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-name">FRIDAY Voice Assistant</h3>
+            <p class="project-desc">
+              AI-powered personal voice assistant integrating Grok AI for advanced natural language understanding and desktop task automation.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Implemented context-aware responses and seamless human-AI interaction flows utilizing a modular, extensible architecture.</li>
+              <li>Architected for rapid integration of new automation skills and third-party APIs.</li>
+              <li>Engineered voice command parsing with natural language interpretation.</li>
+            </ul>
+          </div>
+
+          <div class="project-stack">
+            <span class="stack-badge">Python</span>
+            <span class="stack-badge">Grok AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Certifications Section ================= -->
+  <section id="certifications" class="certifications">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Continuous Learning</span>
+        <h2 class="section-title">Certifications</h2>
+      </div>
+
+      <div class="cert-grid">
+        <div class="glass-card cert-card">
+          <div class="cert-icon"><i class="fa-brands fa-microsoft"></i></div>
+          <div class="cert-info">
+            <h4>AI Concepts for Developers & Technology Professionals</h4>
+            <div class="cert-issuer">Microsoft Learn</div>
+            <div class="cert-date">April 2026</div>
+          </div>
+        </div>
+
+        <div class="glass-card cert-card">
+          <div class="cert-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div class="cert-info">
+            <h4>Draft, Analyze and Present with Microsoft 365 Copilot</h4>
+            <div class="cert-issuer">Microsoft Learn</div>
+            <div class="cert-date">April 2026</div>
+          </div>
+        </div>
+
+        <div class="glass-card cert-card">
+          <div class="cert-icon"><i class="fa-solid fa-robot"></i></div>
+          <div class="cert-info">
+            <h4>Enhance Productivity with Microsoft 365 Copilot Agents</h4>
+            <div class="cert-issuer">Microsoft Learn</div>
+            <div class="cert-date">April 2026</div>
+          </div>
+        </div>
+
+        <div class="glass-card cert-card">
+          <div class="cert-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="cert-info">
+            <h4>Optimize Business Processes with Microsoft 365 Copilot</h4>
+            <div class="cert-issuer">Microsoft Learn</div>
+            <div class="cert-date">February 2026</div>
+          </div>
+        </div>
+
+        <div class="glass-card cert-card">
+          <div class="cert-icon"><i class="fa-brands fa-python"></i></div>
+          <div class="cert-info">
+            <h4>Python for Beginners</h4>
+            <div class="cert-issuer">University of Moratuwa, CODL</div>
+            <div class="cert-date">September 2025</div>
+          </div>
+        </div>
+
+        <div class="glass-card cert-card">
+          <div class="cert-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="cert-info">
+            <h4>Certificate in Computer Hardware</h4>
+            <div class="cert-issuer">NVQ Level 4</div>
+            <div class="cert-date">Accredited Qualification</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Contact Section ================= -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Reach Out</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="glass-card contact-info">
+          <h3>Let's build something together</h3>
+          <p>
+            Whether you want to discuss full-stack software development, AI integrations, or potential engineering roles, feel free to reach out.
+          </p>
+
+          <div class="contact-channels">
+            <div class="channel-item">
+              <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="channel-meta">
+                <span>Email</span>
+                <a href="mailto:pasinduvithanage08@gmail.com">pasinduvithanage08@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="channel-item">
+              <div class="channel-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="channel-meta">
+                <span>Phone</span>
+                <a href="tel:+94761088005">+94 761 088 005</a>
+              </div>
+            </div>
+
+            <div class="channel-item">
+              <div class="channel-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="channel-meta">
+                <span>Location</span>
+                <strong>Anuradhapura, Sri Lanka</strong>
+              </div>
+            </div>
+
+            <div class="channel-item">
+              <div class="channel-icon"><i class="fa-brands fa-github"></i></div>
+              <div class="channel-meta">
+                <span>GitHub</span>
+                <a href="https://github.com/pasinduvithanage08" target="_blank" rel="noopener noreferrer">github.com/pasinduvithanage08</a>
+              </div>
+            </div>
+
+            <div class="channel-item">
+              <div class="channel-icon"><i class="fa-brands fa-linkedin"></i></div>
+              <div class="channel-meta">
+                <span>LinkedIn</span>
+                <a href="https://linkedin.com/in/pasinduvithanage" target="_blank" rel="noopener noreferrer">linkedin.com/in/pasinduvithanage</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="glass-card contact-form-wrap">
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" class="form-input" placeholder="e.g. John Perera" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" id="email" class="form-input" placeholder="e.g. john@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-input" placeholder="Job Inquiry / Collaboration" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              <span>Send Message</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Footer ================= -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Pasindu Lakshan Vithanage. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ================= Javascript ================= -->
+  <script>
+    // Responsive Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuToggle.addEventListener('click', () => {
+      const isVisible = mobileMenu.style.display === 'flex';
+      mobileMenu.style.display = isVisible ? 'none' : 'flex';
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+      });
+    });
+
+    // Contact Form Handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      alert(`Thank you, ${name}! Your message has been prepared. You can also contact directly via pasinduvithanage08@gmail.com.`);
+      document.getElementById('contactForm').reset();
+    }
+  </script>
+</body>
+</html>
